@@ -119,23 +119,5 @@ resources:
   - ${file(resources/api-gateway-errors.yml)}
   # DynamoDB
   - ${file(resources/dynamodb-table.yml)}
-
-Resources:
-  NotesTable:
-    Type: AWS::DynamoDB::Table
-    Properties:
-      TableName: ${self:custom.tableName}
-      AttributeDefinitions:
-        - AttributeName: userId
-          AttributeType: S
-        - AttributeName: noteId
-          AttributeType: S
-      KeySchema:
-        - AttributeName: userId
-          KeyType: HASH
-        - AttributeName: noteId
-          KeyType: RANGE
-      # Set the capacity based on the stage
-      ProvisionedThroughput:
-        ReadCapacityUnits: ${self:custom.tableThroughput}
-        WriteCapacityUnits: ${self:custom.tableThroughput}
+  # S3
+  - ${file(resources/s3-bucket.yml)}
