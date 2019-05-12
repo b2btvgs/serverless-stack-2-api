@@ -112,6 +112,7 @@ functions:
           method: delete
           cors: true
           authorizer: aws_iam
+
 # Create our resources with separate CloudFormation templates
 resources:
   # API Gateway Errors
@@ -122,3 +123,4 @@ resources:
   - ${file(resources/s3-bucket.yml)}
   # Cognito
   - ${file(resources/cognito-user-pool.yml)}
+  - ${file(resources/cognito-identity-pool.yml)}
